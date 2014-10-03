@@ -18,8 +18,8 @@ var ToggleButton = flight.component(
     function toggleButton() {
         this.after('initialize', function () {
             this.on('click', this.toggle);
-            // Use `this.batchify` to make a function that, when called, with batch a call to
-            // the method name you supply
+            // Use `this.batchify` to make a function that, when called, will batch a call to
+            // the name method you supply.
             this.after('toggle', this.batchify('update'));
 
             // Use `this.batch` to call a function when the browser is ready
@@ -48,6 +48,8 @@ Functions are added to a shared queue, so multiple component's batched calls wil
 ### `batchify`
 
 `batchify` takes a string and makes a function that, when called, `batch`-es a call to the method named by the string.
+
+`batchify` will throw if the method name you supply does not exists when `batchify` is called.
 
 ## Development
 
